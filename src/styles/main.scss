@@ -1,0 +1,610 @@
+// на кнопки и прочие элементы можно навесить transition на такие состояния как active, focus и прочие. Но для простоты не делал этого
+
+@use "bootstrap/scss/bootstrap" with (
+  $container-padding-x: 0,
+  $grid-breakpoints: (
+    xs: 0,
+    sm: 480px,
+    md: 768px,
+    lg: 1140px,
+    xl: 1440px,
+  ),
+  $container-max-widths: (
+    xs: 100%,
+    sm: 100%,
+    md: 720px,
+    lg: 928px,
+    xl: 1120px,
+  )
+);
+@use "./reset" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
+@use "./functions" as *;
+@use "./fonts" as *;
+
+section {
+  overflow-x: hidden;
+}
+
+.menu {
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: 100vh;
+  //background-color: $beige-20;
+  border-right: 1px solid $beige-20;
+  transition: padding $transition, width $transition, transform $transition;
+  overflow-x: hidden;
+
+  &__background {
+    height: 100%;
+    row-gap: 46px;
+    padding: 36px 0 25px;
+    background-color: $beige-20;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .wide-logo {
+    display: none;
+  }
+
+  &__burger {
+    cursor: pointer;
+
+    & svg {
+      display: block;
+    }
+  }
+
+  &__address {
+    display: none;
+  }
+
+  &__address-name {
+    display: block;
+    margin-bottom: 4px;
+    text-align: center;
+    font: $pt-sans-regular-10;
+    color: $dark-green;
+  }
+
+  &__address-phone {
+    display: block;
+    font: $pt-sans-regular-13;
+    color: $dark-green;
+    text-decoration: none;
+  }
+
+  .nav__list {
+    row-gap: 16px;
+  }
+
+  .nav__item {
+    flex: 1 0 auto;
+    width: 100%;
+  }
+
+  .nav__link {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+    text-decoration: none;
+
+    & svg {
+      width: 25px;
+    }
+  }
+
+  .nav__link-text {
+    display: none;
+    color: $dark-green;
+  }
+
+  &__search {
+    position: relative;
+    margin-top: auto;
+    width: 25px;
+    height: 25px;
+    border: 1px solid $dark-green;
+    border-radius: 50%;
+    transition: width $transition, border-radius $transition;
+  }
+
+  &__search-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 10.4px;
+    height: 12.7px;
+    transform: translate(-50%, -50%);
+
+    & svg {
+      width: 10.4px;
+      height: 12.7px;
+      display: block;
+      vertical-align: baseline;
+    }
+  }
+
+  &__search-input {
+    width: 100%;
+    padding: 8px 12px 8px 43px;
+    font: $pt-sans-regular-13;
+    color: $dark-green;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    opacity: 0;
+    transition: opacity $transition;
+
+    &::placeholder {
+      color: $dark-green;
+    }
+  }
+
+  &__second-nav {
+    display: none;
+  }
+
+  .second-nav__link {
+    font: $pt-sans-regular-13;
+    color: $dark-green;
+    text-decoration: none;
+  }
+
+  &--expanded {
+    @include expanded-menu;
+  }
+}
+
+.header {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 56px 0;
+
+  &__inner {
+    column-gap: 17px;
+    justify-content: flex-end;
+  }
+
+  &__burger-mob,
+  &__logo-mob {
+    display: none;
+  }
+
+  &__logo-mob {
+    & svg {
+      width: 98px;
+      height: 52px;
+    }
+  }
+
+  &__btn {
+    @include base-btn;
+
+    font: $pt-sans-regular-13;
+    color: $white;
+    text-transform: uppercase;
+    background-color: $fuchsia;
+
+    &:hover {
+      color: $white;
+      background-color: $fuchsia;
+    }
+  }
+
+  &__cart {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: $white;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 15px;
+    }
+
+    &:hover {
+      background-color: $white;
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  padding-top: 168px;
+  height: 100vh;
+  min-height: 800px;
+  background-color: gray;
+
+  &__title {
+    max-width: 846px;
+    font: $h1-thin;
+    text-transform: uppercase;
+    color: $dark-blue;
+
+    &--semibold {
+      font: $h1-semibold;
+      font-style: italic;
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+    max-width: 477px;
+    color: $dark-blue;
+    font: $pt-sans-regular-16;
+  }
+
+  &__btn {
+    margin-top: 48px;
+    @include base-btn;
+
+    font: $pt-sans-regular-13;
+    text-transform: uppercase;
+    color: $dark-blue;
+
+    background-color: $white;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: $white;
+    }
+  }
+
+  &__slider-btns {
+    position: absolute;
+    bottom: 53px;
+  }
+
+  &__slider-pagination {
+    color: $dark-blue;
+    font: $pt-sans-regular-13;
+  }
+
+  &__slider {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 72px;
+  }
+
+  &__swiper {
+    height: 100%;
+  }
+
+  &__swiper-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.categories {
+  position: relative;
+  padding-top: 192px;
+
+  .invisible {
+    width: 0;
+    height: 0;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    height: 100%;
+  }
+
+  &::before {
+    right: 0;
+    width: calc((100% - 1120px) / 2);
+    background-color: $dark-blue;
+  }
+
+  &::after {
+    left: 0;
+    width: calc(100% - (100% - 1120px) / 2);
+    background-color: $dark-green;
+  }
+
+  .catalog {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 27.5%) 45%;
+    grid-template-rows: repeat(2, 240px);
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: -246px;
+      left: 0;
+      width: 110%;
+      height: 100%;
+      background: url(/src/images/catalog/bg.svg) no-repeat center center / contain;
+    }
+
+    &__item {
+      position: relative;
+      z-index: 1;
+
+      &--big {
+        grid-row: span 2;
+      }
+
+      &--wide {
+        grid-column: span 2;
+      }
+
+      &:nth-child(1) {
+        background: url("../images/catalog/item-1.jpg") center / cover no-repeat;
+      }
+
+      &:nth-child(2) {
+        background: url("../images/catalog/item-2.jpg") center / cover no-repeat;
+      }
+
+      &:nth-child(3) {
+        background: url("../images/catalog/item-3.jpg") center / cover no-repeat;
+      }
+
+      &:nth-child(4) {
+        background: url("../images/catalog/item-4.jpg") center / cover no-repeat;
+      }
+    }
+
+    &__link {
+      display: block;
+      height: 100%;
+      padding: 40px;
+      text-decoration: none;
+    }
+
+    &__title {
+      font: $h2-bold;
+      text-transform: uppercase;
+      color: $dark-blue;
+
+      &--thin {
+        font: $h2-regular;
+      }
+
+      &--white {
+        color: $white;
+      }
+    }
+  }
+}
+
+.best-offers {
+  margin-top: 130px;
+  padding-bottom: 130px;
+
+  &__header {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__slider-pagination {
+    color: $dark-blue;
+    vertical-align: middle;
+  }
+
+  &__slider-prev,
+  &__slider-next {
+    --bs-btn-padding-x: 0;
+    --bs-btn-padding-y: 0;
+  }
+
+  &__title {
+    font: $pt-sans-regular-20;
+    color: $dark-blue;
+    text-transform: uppercase;
+  }
+
+  &__swiper {
+    margin: 22px -16px 0 0;
+  }
+
+  &__swiper-wrapper {
+    align-items: stretch;
+  }
+
+  &__swiper-slide {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    width: 256px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 16px 16px 40px 16px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: $light-green;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    text-decoration: none;
+  }
+
+  &__item-attributes {
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item-labels {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item-discount {
+    span {
+      display: block;
+      width: 50px;
+      height: 50px;
+      font: get-font(700, 20px, "Cormorant");
+      line-height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+      color: $fuchsia;
+      border-radius: 50%;
+      background-color: $white;
+    }
+  }
+
+  &__swiper-img-wrapper {
+    position: relative;
+  }
+
+  &__swiper-img {
+    width: 100%;
+    min-height: 278px;
+    max-height: 278px;
+    object-fit: cover;
+  }
+
+  &__vars {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__more-vars {
+    position: absolute;
+    top: 100%;
+    display: none;
+  }
+
+  &__vars-item {
+    position: relative;
+    width: 32px;
+    height: 32px;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &--active::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border: 1px solid $dark-green;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__vars-btn {
+    all: unset;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    background-color: $dark-green;
+
+    svg {
+      transition: transform $transition;
+    }
+  }
+
+  &__item-title {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-right: 11px;
+    color: $dark-blue;
+    font: $pt-sans-regular-16;
+  }
+
+  &__price {
+    margin-top: auto;
+    font: get-font(400, 20px, "Cormorant Infant");
+    color: $dark-blue;
+  }
+
+  &__price-current {
+    margin-left: 12px;
+    font: $cormorant-bold;
+  }
+
+  &__price-old {
+    position: relative;
+    margin-left: 16px;
+    font: $cormorant-regular;
+    color: #CDD5DB; // hardcode
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 23px;
+      right: -4px;
+      width: 67.6px;
+      height: 1px;
+      background-color: $fuchsia;
+      transform: rotate(-29.22deg);
+    }
+  }
+
+  &__purchase {
+    margin-top: 16px;
+  }
+
+  &__btn {
+    padding: 11px 21px;
+    margin-right: 16px;
+    font: get-font(400, 13px, "PT_Sans-Web-Regular");
+    color: $dark-blue;
+    text-transform: uppercase;
+    border: 1px solid $dark-blue;
+    border-radius: 0;
+
+    &:hover {
+      border: 1px solid $dark-blue;
+    }
+  }
+
+  &__cart {
+
+  }
+}

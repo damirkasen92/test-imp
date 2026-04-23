@@ -1,0 +1,45 @@
+@mixin base-btn {
+  padding: 11.5px 24px;
+  border-radius: 0;
+}
+
+@mixin expanded-menu {
+  width: 224px;
+
+  .menu__background {
+    padding: 31px 24px 29px;
+    row-gap: 24px;
+  }
+
+  .menu__nav {
+    width: 100%;
+  }
+
+  .menu__search {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .menu__search-icon {
+    left: 9px;
+    width: 17px;
+    height: 19px;
+    transform: translate(0, -50%);
+
+    & svg {
+      width: 17px;
+      height: 19px;
+      display: block;
+      vertical-align: baseline;
+    }
+  }
+
+  .menu__search-input {
+    opacity: 1;
+  }
+
+  .menu__second-nav {
+    width: 100%;
+  }
+}

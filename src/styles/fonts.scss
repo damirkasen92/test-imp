@@ -1,0 +1,51 @@
+/* пожно подгрузить и другие форматы шрифтов woff2 и прочие, оставил 1 для простоты */
+
+@font-face {
+  src: url("../fonts/Cormorant-Regular.ttf") format("truetype");
+  font-family: 'Cormorant';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../fonts/Cormorant-Bold.ttf") format("truetype");
+  font-family: 'Cormorant';
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../fonts/CormorantInfant-Light.ttf") format("truetype");
+  font-family: 'Cormorant Infant';
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../fonts/CormorantInfant-Regular.ttf") format("truetype");
+  font-family: 'Cormorant Infant';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../fonts/CormorantInfant-SemiBold.ttf") format("truetype");
+  font-family: 'Cormorant Infant';
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../fonts/CormorantInfant-Bold.ttf") format("truetype");
+  font-family: 'Cormorant Infant';
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("../fonts/PT_Sans-Web-Regular.ttf") format("truetype");
+  font-family: 'PT_Sans-Web-Regular';
+  font-weight: 400;
+  font-style: normal;
+}
+

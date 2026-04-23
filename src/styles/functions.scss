@@ -1,0 +1,7 @@
+@function container-offset($var1, $var2) {
+  @return calc((#{$var1} - #{$var2}) / 2);
+}
+
+@function get-font($thickness, $size, $name) {
+  @return #{$thickness} #{$size}/1 #{$name};
+}
