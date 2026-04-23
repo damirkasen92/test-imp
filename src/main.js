@@ -128,11 +128,7 @@ function sliders() {
             0: {
                 slidesPerView: "auto",
                 slidesPerGroup: 1,
-                freeMode: {
-                    enabled: true,
-                    momentum: true,
-                    momentumBounce: true,
-                },
+                freeMode: true,
                 grabCursor: true,
                 loop: false,
             },

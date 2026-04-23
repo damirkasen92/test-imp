@@ -187,6 +187,10 @@
       display: none;
     }
 
+    &__swiper {
+      margin-right: -20px;
+    }
+
     &__swiper-slide {
       width: auto;
       max-width: 224px;

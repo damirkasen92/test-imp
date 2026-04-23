@@ -34,7 +34,7 @@ section {
   top: 0;
   width: 72px;
   height: 100vh;
-  //background-color: $beige-20;
+  background-color: $beige-20;
   border-right: 1px solid $beige-20;
   transition: padding $transition, width $transition, transform $transition;
   overflow-x: hidden;
@@ -43,7 +43,6 @@ section {
     height: 100%;
     row-gap: 46px;
     padding: 36px 0 25px;
-    background-color: $beige-20;
   }
 
   .logo {
